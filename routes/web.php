@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ZatcaController;
 
 Route::get('/', function () {
     return redirect('/zatca');
@@ -15,9 +15,15 @@ Route::prefix('zatca')->middleware(['auth'])->group(function () {
     // API endpoints for ZATCA operations
     Route::post('/generate-csr', [ZatcaController::class, 'generateCsr'])->name('zatca.generate-csr');
     Route::post('/send-csr', [ZatcaController::class, 'sendCsr'])->name('zatca.send-csr');
-
-    // Status and file management
-    Route::get('/status', [ZatcaController::class, 'showStatus'])->name('zatca.status');
-    Route::get('/download/{type}', [ZatcaController::class, 'downloadFile'])->name('zatca.download')
-        ->where('type', 'private-key|csr');
 });
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    });
+
+    require __DIR__.'/auth.php';

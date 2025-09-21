@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
     <title>نموذج إعداد شهادة هيئة الزكاة والضريبة والجمارك (ZATCA)</title>
-    
+
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=cairo:400,500,600,700&display=swap" rel="stylesheet" />
-    
+
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @else
@@ -40,14 +40,6 @@
     <div class="min-h-screen flex flex-col justify-center py-12">
         <div class="mx-auto max-w-4xl px-4">
             <!-- Header -->
-            <div class="text-center mb-8">
-                <h1 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                    نموذج إعداد شهادة هيئة الزكاة والضريبة والجمارك
-                </h1>
-                <p class="text-gray-600">
-                    قم بملء البيانات المطلوبة لإنشاء طلب الحصول على شهادة ZATCA الخاصة بك
-                </p>
-            </div>
 
             <!-- Alert Messages -->
             <div id="alertContainer" class="mb-6"></div>
@@ -56,7 +48,7 @@
             <div class="bg-white shadow-lg rounded-lg p-6">
                 <form id="zatcaForm" class="space-y-6">
                     @csrf
-                    
+
                     <!-- Environment Selection -->
                     <div class="bg-yellow-50 border border-yellow-300 rounded-lg p-4">
                         <h3 class="text-lg font-semibold text-yellow-800 mb-4">اختيار البيئة</h3>
@@ -86,15 +78,15 @@
                                     <span></span>
                                 </div>
                             </div>
-                            
+
                             <div class="relative mb-4">
                                 <label for="commonName" class="block text-sm font-medium text-gray-700 mb-2">
                                     الاسم المشترك <span class="text-red-500">*</span>
                                 </label>
-                                <input type="text" 
-                                       id="commonName" 
-                                       name="commonName" 
-                                       required 
+                                <input type="text"
+                                       id="commonName"
+                                       name="commonName"
+                                       required
                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right"
                                        placeholder="مثال: TST-886431145-399999999900003">
                                 <div class="text-red-600 text-xs mt-1 flex items-center hidden" id="error-commonName" aria-live="polite">
@@ -102,16 +94,16 @@
                                     <span></span>
                                 </div>
                             </div>
-                            
+
                             <div class="relative mb-4">
                                 <label for="organizationIdentifier" class="block text-sm font-medium text-gray-700 mb-2">
                                     معرف الشركة (VAT Number) <span class="text-red-500">*</span>
                                 </label>
-                                <input type="text" 
-                                       id="organizationIdentifier" 
-                                       name="organizationIdentifier" 
-                                       required 
-                                       pattern="[0-9]{15}" 
+                                <input type="text"
+                                       id="organizationIdentifier"
+                                       name="organizationIdentifier"
+                                       required
+                                       pattern="[0-9]{15}"
                                        maxlength="15"
                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                        placeholder="399999999900003"
@@ -122,14 +114,14 @@
                                     <span></span>
                                 </div>
                             </div>
-                            
+
                             <div class="relative mb-4">
                                 <label for="businessCategory" class="block text-sm font-medium text-gray-700 mb-2">
                                     فئة النشاط التجاري <span class="text-red-500">*</span>
                                 </label>
-                                <select id="businessCategory" 
-                                        name="businessCategory" 
-                                        required 
+                                <select id="businessCategory"
+                                        name="businessCategory"
+                                        required
                                         class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right">
                                     <option value="">اختر فئة النشاط</option>
                                     <option value="Supply activities to support transportation">أنشطة الدعم للنقل</option>
@@ -157,10 +149,10 @@
                                 <label for="serialNumber" class="block text-sm font-medium text-gray-700 mb-2">
                                     الرقم التسلسلي <span class="text-red-500">*</span>
                                 </label>
-                                <input type="text" 
-                                       id="serialNumber" 
-                                       name="serialNumber" 
-                                       required 
+                                <input type="text"
+                                       id="serialNumber"
+                                       name="serialNumber"
+                                       required
                                        value="1-TST"
                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                        dir="ltr">
@@ -182,9 +174,9 @@
                             <label for="address" class="block text-sm font-medium text-gray-700 mb-2">
                                 العنوان الكامل <span class="text-red-500">*</span>
                             </label>
-                            <textarea id="address" 
-                                      name="address" 
-                                      required 
+                            <textarea id="address"
+                                      name="address"
+                                      required
                                       rows="3"
                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-right"
                                       placeholder="مثال: شارع الملك فهد، حي العليا، الرياض 12244-2255، المملكة العربية السعودية"></textarea>
@@ -212,7 +204,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="flex items-center justify-between">
                                 <div class="relative">
                                     <label class="flex items-center">
@@ -234,7 +226,7 @@
 
                     <!-- Action Buttons -->
                     <div class="flex flex-col md:flex-row gap-4 pt-6">
-                        <button type="submit" 
+                        <button type="submit"
                                 id="generateBtn"
                                 class="flex-1 bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors flex items-center justify-center relative">
                             <span id="generateBtnText">إنشاء طلب الشهادة (CSR)</span>
@@ -248,8 +240,8 @@
                                 <svg class="h-5 w-5 text-red-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                             </span>
                         </button>
-                        
-                        <button type="button" 
+
+                        <button type="button"
                                 id="sendBtn"
                                 disabled
                                 class="flex-1 bg-gray-400 text-white py-3 px-6 rounded-lg font-semibold cursor-not-allowed opacity-50 transition-colors flex items-center justify-center relative">
@@ -272,12 +264,12 @@
             <div id="resultsSection" class="mt-8 hidden">
                 <div class="bg-white shadow-lg rounded-lg p-6">
                     <h3 class="text-xl font-semibold text-gray-900 mb-4">نتائج إنشاء الشهادة</h3>
-                    
+
                     <div class="space-y-4">
                         <div class="relative">
                             <label class="block text-sm font-medium text-gray-700 mb-2">المفتاح الخاص (Private Key)</label>
-                            <textarea id="privateKey" 
-                                      readonly 
+                            <textarea id="privateKey"
+                                      readonly
                                       class="w-full h-40 px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-sm font-mono"
                                       dir="ltr"></textarea>
                             <button type="button" onclick="copyToClipboard('privateKey')" class="mt-2 px-2 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:ring-2 focus:ring-blue-500 focus:outline-none flex items-center" title="نسخ إلى الحافظة">
@@ -289,11 +281,11 @@
                                 <span></span>
                             </div>
                         </div>
-                        
+
                         <div class="relative">
                             <label class="block text-sm font-medium text-gray-700 mb-2">طلب الشهادة (CSR)</label>
-                            <textarea id="csrContent" 
-                                      readonly 
+                            <textarea id="csrContent"
+                                      readonly
                                       class="w-full h-40 px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-sm font-mono"
                                       dir="ltr"></textarea>
                             <button type="button" onclick="copyToClipboard('csrContent')" class="mt-2 px-2 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 focus:ring-2 focus:ring-blue-500 focus:outline-none flex items-center" title="نسخ إلى الحافظة">
@@ -306,7 +298,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="mt-6 p-4 bg-green-50 border border-green-300 rounded-lg">
                         <h4 class="font-semibold text-green-800 mb-2">الخطوات التالية:</h4>
                         <ol class="list-decimal list-inside text-sm text-green-700 space-y-1">
@@ -323,31 +315,31 @@
     <script>
         document.getElementById('zatcaForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const generateBtn = document.getElementById('generateBtn');
             const generateBtnText = document.getElementById('generateBtnText');
             const generateLoader = document.getElementById('generateBtnSpinner');
             const sendBtn = document.getElementById('sendBtn');
-            
+
             // Show loading state
             generateBtn.disabled = true;
             generateBtnText.textContent = 'جارٍ الإنشاء...';
             generateLoader.classList.remove('hidden');
-            
+
             try {
                 const formData = new FormData(e.target);
                 const data = Object.fromEntries(formData.entries());
-                
+
                 // Convert checkbox values
                 data.simplified = data.simplified === '1';
                 data.standard = data.standard === '1';
-                
+
                 // Validate invoice types
                 if (!data.simplified && !data.standard) {
                     showAlert('يجب اختيار نوع واحد على الأقل من أنواع الفواتير', 'error');
                     return;
                 }
-                
+
                 const response = await fetch('/zatca/generate-csr', {
                     method: 'POST',
                     headers: {
@@ -356,22 +348,22 @@
                     },
                     body: JSON.stringify(data)
                 });
-                
+
                 const result = await response.json();
-                
+
                 if (result.status === 'success') {
                     // Display results
                     document.getElementById('privateKey').value = result.data.privateKey;
                     document.getElementById('csrContent').value = result.data.csrContent;
                     document.getElementById('resultsSection').classList.remove('hidden');
-                    
+
                     // Enable send button
                     sendBtn.disabled = false;
                     sendBtn.classList.remove('bg-gray-400', 'cursor-not-allowed', 'opacity-50');
                     sendBtn.classList.add('bg-green-600', 'hover:bg-green-700');
-                    
+
                     showAlert('تم إنشاء طلب الشهادة بنجاح!', 'success');
-                    
+
                     // Scroll to results
                     document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
                 } else {
@@ -387,19 +379,19 @@
                 generateLoader.classList.add('hidden');
             }
         });
-        
+
         // Send CSR to ZATCA
         document.getElementById('sendBtn').addEventListener('click', async function() {
             const csrContent = document.getElementById('csrContent').value;
-            
+
             if (!csrContent) {
                 showAlert('لا يوجد طلب شهادة للإرسال', 'error');
                 return;
             }
-            
+
             this.disabled = true;
             this.textContent = 'جارٍ الإرسال...';
-            
+
             try {
                 const response = await fetch('/zatca/send-csr', {
                     method: 'POST',
@@ -411,9 +403,9 @@
                         csrContent: csrContent
                     })
                 });
-                
+
                 const result = await response.json();
-                
+
                 if (result.status === 'success') {
                     showAlert('تم إرسال طلب الشهادة إلى ZATCA بنجاح!', 'success');
                 } else {
@@ -427,55 +419,55 @@
                 this.textContent = 'إرسال إلى ZATCA';
             }
         });
-        
+
         function showAlert(message, type) {
             const alertContainer = document.getElementById('alertContainer');
             const alertClass = type === 'success' ? 'bg-green-50 border-green-300 text-green-800' : 'bg-red-50 border-red-300 text-red-800';
-            
+
             const alertHTML = `
                 <div class="border rounded-lg p-4 ${alertClass}">
                     <p class="font-medium">${message}</p>
                 </div>
             `;
-            
+
             alertContainer.innerHTML = alertHTML;
-            
+
             // Auto-hide after 5 seconds
             setTimeout(() => {
                 alertContainer.innerHTML = '';
             }, 5000);
         }
-        
+
         function copyToClipboard(elementId) {
             const element = document.getElementById(elementId);
             element.select();
             element.setSelectionRange(0, 99999);
-            
+
             navigator.clipboard.writeText(element.value).then(() => {
                 showAlert('تم نسخ المحتوى بنجاح!', 'success');
             }).catch(() => {
                 showAlert('فشل في نسخ المحتوى', 'error');
             });
         }
-        
+
         // Auto-format VAT number
         document.getElementById('organizationIdentifier').addEventListener('input', function(e) {
             // Remove non-digits
             let value = e.target.value.replace(/\D/g, '');
-            
+
             // Limit to 15 digits
             if (value.length > 15) {
                 value = value.slice(0, 15);
             }
-            
+
             e.target.value = value;
         });
-        
+
         // Auto-generate common name based on VAT number
         document.getElementById('organizationIdentifier').addEventListener('blur', function(e) {
             const vatNumber = e.target.value;
             const commonNameField = document.getElementById('commonName');
-            
+
             if (vatNumber.length === 15 && !commonNameField.value) {
                 commonNameField.value = `TST-886431145-${vatNumber}`;
             }

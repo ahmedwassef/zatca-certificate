@@ -8,9 +8,9 @@ Route::get('/', function () {
 });
 
 // ZATCA Routes
-Route::prefix('zatca')->group(function () {
+Route::prefix('zatca')->middleware(['auth'])->group(function () {
     // Display ZATCA setup form
-    Route::get('/', [ZatcaController::class, 'showForm'])->name('zatca.form');
+    Route::get('/ ', [ZatcaController::class, 'showForm'])->name('zatca.form');
 
     // API endpoints for ZATCA operations
     Route::post('/generate-csr', [ZatcaController::class, 'generateCsr'])->name('zatca.generate-csr');
